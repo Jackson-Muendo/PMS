@@ -15,7 +15,7 @@ const pickedUpOdersRoutes = require('./routes/pickedUpOders');
 
 
 
-mongoose.connect('mongodb+srv://lalana:OJx2X4IllVNl9up4@cluster0-rjtww.mongodb.net/pharmacy?retryWrites=true&w=majority',{useNewUrlParser: true , useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://jackson:Jm123456#@cluster0.orq3iot.mongodb.net/?retryWrites=true&w=majority',{useNewUrlParser: true , useUnifiedTopology: true})
   .then(()=>{
     console.log('connected to database!');
   })
