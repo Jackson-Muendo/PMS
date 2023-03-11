@@ -49,9 +49,9 @@ export class AuthService{
 
   }
 
-  login(email: string, password){
-    const authData :AuthData = {name: null , contact: null , nic: null , email: email , password: password};
-    this.http.post<{token: string, expiresIn: number, role :string , message: string}>("http://localhost:3000/api/user/login",authData)
+  login(email: string, password: string){
+    const authData :AuthData = {name: null, contact: null , nic: null , email: email , password: password};
+    this.http.post<{token: string, expiresIn: number, role :string , message: string}>("http://localhost:3000/api/user/login",authData,)
       .subscribe(response =>{
         const token= response.token;
         this.token=token;

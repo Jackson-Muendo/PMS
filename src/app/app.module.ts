@@ -199,6 +199,7 @@ const appRoutes: Routes =[
     AboutToOutofStockWindowComponent,
     AboutToOutofStockItemsComponent,
     XOutofstockDialogBoxComponent
+  
 
   ],
   entryComponents: [
