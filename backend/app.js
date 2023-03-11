@@ -14,13 +14,14 @@ const verifiedDoctorOderRoutes = require('./routes/verifiedDoctorOder');
 const pickedUpOdersRoutes = require('./routes/pickedUpOders');
 
 
-
-mongoose.connect('mongodb+srv://lalana:OJx2X4IllVNl9up4@cluster0-rjtww.mongodb.net/pharmacy?retryWrites=true&w=majority',{useNewUrlParser: true , useUnifiedTopology: true})
+//P8qymJEzudfNXTyZ
+mongoose.connect('mongodb+srv://jackson:P8qymJEzudfNXTyZ@cluster0.xqthpad.mongodb.net/?retryWrites=true&w=majority',{useNewUrlParser: true , useUnifiedTopology: true})
   .then(()=>{
     console.log('connected to database!');
   })
-  .catch(()=>{
+  .catch((error)=>{
     console.log('connection failed! ');
+    console.log(error.message);
   });
   //mongoose.set('useCreateIndex', true);
 
