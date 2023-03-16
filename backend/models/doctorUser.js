@@ -11,6 +11,6 @@ const doctorUserSchema = mongoose.Schema({
   dateTime: {type: Date, default: Date.now , require:true}
 });
 
-doctorUserSchema.plugin(uniqueValidator);
+//doctorUserSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('DoctorUser',doctorUserSchema);

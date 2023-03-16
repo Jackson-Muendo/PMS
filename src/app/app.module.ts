@@ -199,7 +199,6 @@ const appRoutes: Routes =[
     AboutToOutofStockWindowComponent,
     AboutToOutofStockItemsComponent,
     XOutofstockDialogBoxComponent
-  
 
   ],
   entryComponents: [
@@ -230,6 +229,6 @@ const appRoutes: Routes =[
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor , multi: true},AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,AuthDoctorUserService,DoctorOderServices]
 })
 export class AppModule { }

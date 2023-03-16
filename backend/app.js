@@ -13,15 +13,14 @@ const doctorOderRoutes = require('./routes/doctorOders');
 const verifiedDoctorOderRoutes = require('./routes/verifiedDoctorOder');
 const pickedUpOdersRoutes = require('./routes/pickedUpOders');
 
-//P8qymJEzudfNXTyZ
 
-mongoose.connect('mongodb+srv://jackson:P8qymJEzudfNXTyZ@cluster0.dvlixbv.mongodb.net/?retryWrites=true&w=majority',{useNewUrlParser: true , useUnifiedTopology: true})
+
+mongoose.connect('mongodb+srv://jackson:P8qymJEzudfNXTyZ@cluster0.dvlixbv.mongodb.net/pharmacy?retryWrites=true&w=majority',{useNewUrlParser: true , useUnifiedTopology: true})
   .then(()=>{
     console.log('connected to database!');
   })
   .catch((error)=>{
-    console.log('connection failed! ');
-    console.log(error.message);
+    console.log('connection failed! '+ error);
   });
   //mongoose.set('useCreateIndex', true);
 
@@ -33,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/images" , express.static(path.join("images")));
 
 
-app.use((req,res,next)=>{
+app.use((_req,res,next)=>{
   res.setHeader("Access-Control-Allow-Origin","*");
   res.setHeader(
     "Access-Control-Allow-Headers",

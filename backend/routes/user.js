@@ -7,7 +7,7 @@ const User = require("../models/user");
 router.post("/signup", (req,res,next)=>{
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
-      const user = new User({
+      const newuser = new User({
         name : req.body.name,
         contact : req.body.contact,
         nic : req.body.nic,
@@ -16,25 +16,22 @@ router.post("/signup", (req,res,next)=>{
         role: req.body.role
       });
 
-      user.save()
+      newuser.save()
         .then(result =>{
           res.status(201).json({
             message : 'User created!',
             result: result
           });
-          //console.log(user);
         })
 
-      .catch(err =>{
+        .catch(err =>{
           res.status(500).json({
-            error :err,
-            
-            //conole.log(error)
+            error :err
           });
         });
     })
 
-  })
+})
 
 
 
@@ -42,14 +39,12 @@ router.post("/login" , (req, res ,  next)=>{
   let fetchedUser;
   User.findOne({email: req.body.email}).then(user=>{
     if(!user){
-      res.status(401).json({
+      return res.status(401).json({
         token: "error",
         expiresIn: "error",
         role: "error",
         message: "Invalid Email (user email not registered)"
-        //return;
       });
-      
     }
     fetchedUser=user;
     return bcrypt.compare(req.body.password, user.password);
@@ -62,9 +57,9 @@ router.post("/login" , (req, res ,  next)=>{
         role: "error",
         message: "Invalid password please try again"
       });
-      
     }
-    const token = jwt.sign({email: fetchedUser.email , userId : fetchedUser ._id } ,
+    const token = jwt.sign(
+      {email: fetchedUser.email , userId : fetchedUser ._id } ,
       'this_is_the_webToken_secret_key' ,
       { expiresIn : "1h"}
       );
@@ -75,8 +70,8 @@ router.post("/login" , (req, res ,  next)=>{
         message: "Logged in Successfully"
       });
   })
-  .catch(err =>{
-    res.status(401).json({
+  .catch(_err =>{
+    return res.status(401).json({
       message: "Auth failed"
     });
   });
@@ -84,7 +79,7 @@ router.post("/login" , (req, res ,  next)=>{
 
 router.get("/getUserData",(req,res,next)=>{
   User.find().then(documents=>{
-    return res.status(200).json({
+    res.status(200).json({
       message : 'supplier added sucessfully',
       users :documents
     });
@@ -95,9 +90,9 @@ router.get("/getUserData",(req,res,next)=>{
 router.get("/:id",(req,res,next)=>{
   User.findById(req.params.id).then(user =>{
     if(user){
-      return res.status(200).json(user);
+      res.status(200).json(user);
     }else{
-      return res.status(200).json({message:'user not found'});
+      res.status(200).json({message:'user not found'});
     }
   });
 });
@@ -120,7 +115,7 @@ router.put("/:id",(req,res,next)=>{
     res.status(200).json({message : "Update user Successful !"});
   })
   .catch(err =>{
-    return res.status(500).json({
+    res.status(500).json({
     error :err
    });
 });
@@ -131,7 +126,7 @@ router.put("/:id",(req,res,next)=>{
 router.delete("/:id",(req, res, next) => {
   User.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);
-    return res.status(200).json({ message: 'user deleted!' });
+    res.status(200).json({ message: 'user deleted!' });
   });
 });
 

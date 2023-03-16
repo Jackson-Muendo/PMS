@@ -13,6 +13,8 @@ export class SignupComponent {
   onSignup(form:  NgForm){
 
     if(form.invalid){
+      console.error();
+      
       return;
     }
     console.log(form.value.role)

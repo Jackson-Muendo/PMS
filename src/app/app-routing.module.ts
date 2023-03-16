@@ -36,11 +36,11 @@ import { XConfigurationSettingsAdminComponent } from './mainwindow/x-configurati
 const routes: Routes = [
   {path: 'suppliers', component: AddSupplierWindowComponent  },
   {path: 'suppliers/create', component: SupplierInventoryWindowComponent },
-  {path: 'edit/:supplierId', component: AddSupplierWindowComponent ,canActivate:[AuthGuard]},
+  {path: 'edit/:supplierId', component: AddSupplierWindowComponent },
 
   {path: 'inventory', component: AddInventoryWindowComponent },
   {path: 'inventory/create', component: DrugInventoryWindowComponent },
-  {path: 'editi/:inventoryId', component: AddInventoryWindowComponent ,canActivate:[AuthGuard]},
+  {path: 'editi/:inventoryId', component: AddInventoryWindowComponent },
 
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
@@ -75,6 +75,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: []
 })
 export class AppRoutingModule { }
