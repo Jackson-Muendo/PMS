@@ -14,7 +14,10 @@ const verifiedDoctorOderRoutes = require('./routes/verifiedDoctorOder');
 const pickedUpOdersRoutes = require('./routes/pickedUpOders');
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ef53c8e9f767e26e07832eec5ada10db54b49bfe
 mongoose.connect('mongodb+srv://jackson:P8qymJEzudfNXTyZ@cluster0.dvlixbv.mongodb.net/pharmacy?retryWrites=true&w=majority',{useNewUrlParser: true , useUnifiedTopology: true})
   .then(()=>{
     console.log('connected to database!');
